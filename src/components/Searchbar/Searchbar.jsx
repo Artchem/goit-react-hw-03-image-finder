@@ -5,25 +5,25 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default class Searchbar extends Component {
   state = {
-    name: '',
+    searchText: '',
   };
 
   handleNameChange = evt => {
     // console.log(evt);
-    this.setState({ name: evt.target.value.toLowerCase() });
+    this.setState({ searchText: evt.target.value.toLowerCase() });
   };
 
   handleSubmit = evt => {
     evt.preventDefault();
-    if (this.state.name.trim() === '') {
+    if (this.state.searchText.trim() === '') {
       toast.error('Enter photo category !');
       return;
     }
-    this.props.onSubmit(this.state.name);
+    this.props.onSubmit(this.state.searchText);
     this.resetForm();
   };
   resetForm = () => {
-    this.setState({ name: '' });
+    this.setState({ searchText: '' });
   };
 
   render() {
@@ -41,8 +41,8 @@ export default class Searchbar extends Component {
           <input
             className={css.input}
             onChange={this.handleNameChange}
-            value={this.state.name}
-            name="name"
+            value={this.state.searchText}
+            name="searchText"
             type="text"
             // autocomplete="off"
             // autofocus

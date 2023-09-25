@@ -1,35 +1,27 @@
 import { Modal } from './Modal/Modal';
 import { ToastContainer } from 'react-toastify';
-import axios from 'axios';
 
 import React, { Component } from 'react';
 import Searchbar from './Searchbar/Searchbar';
-import { ImageGallery } from './ImageGallery/ImageGallery';
-import { ImageGalleryItem } from './ImageGalleryItem/ImageGalleryItem';
+// import { ImageGallery } from './ImageGallery/ImageGallery';
+// import { ImageGalleryItem } from './ImageGalleryItem/ImageGalleryItem';
+import ContentInfo from './ContentInfo/ContentInfo';
 
 export class App extends Component {
   state = {
     showModal: false,
-    photos: [],
+    // photos: [],
+    searchText: '',
   };
-  componentDidMount() {
-    axios
-      .get(
-        `https://pixabay.com/api/?q=cat&page=1&key=38837496-e09cca1b216ed759136fb60be&image_type=photo&orientation=horizontal&per_page=12`
-      )
-      .then(res => {
-        console.log(res.data.hits);
-        return res.data.hits;
-      })
-      .then(photos => this.setState({ photos }));
-  }
+  componentDidMount() {}
 
   toggleModal = () => {
     this.setState(prevState => ({ showModal: !prevState.showModal }));
   };
 
-  handleFormSubmit = name => {
-    console.log(name);
+  handleFormSubmit = searchText => {
+    console.log(searchText);
+    this.setState({ searchText: searchText });
   };
 
   render() {
@@ -37,18 +29,21 @@ export class App extends Component {
     return (
       <div>
         <Searchbar onSubmit={this.handleFormSubmit} />
+
+        <ContentInfo searchText={this.state.searchText}></ContentInfo>
+
         <ToastContainer autoClose={3000} />
-        <ImageGallery>
+        {/* <ImageGallery>
           <ImageGalleryItem photos={this.state.photos} />
-        </ImageGallery>
-        {this.state.photo && (
+        </ImageGallery> */}
+        {/* {this.state.photos && (
           <div>
             Photo
             <li className="gallery-item">
               <img src={this.state} alt="" />
             </li>
           </div>
-        )}
+        )} */}
         <button type="button" onClick={this.toggleModal}>
           open
         </button>
