@@ -7,28 +7,20 @@ const modalRoot = document.querySelector('#modal-root');
 
 export class Modal extends Component {
   componentDidMount() {
-    console.log('Modal componentDidMount');
-
     window.addEventListener('keydown', this.handleKeyDown);
   }
 
   componentWillUnmount() {
-    console.log('Modal componentWillMount');
-
     window.removeEventListener('keydown', this.handleKeyDown);
   }
 
   handleKeyDown = e => {
     if (e.code === 'Escape') {
-      // console.log(e.code);
-      console.log('Close modal');
-      // console.log(this.props.onClose);
       this.props.onClose();
     }
   };
 
   handleBackdropClick = evt => {
-    console.log('Click in backdrop');
     if (evt.target === evt.currentTarget) {
       this.props.onClose();
     }
@@ -38,7 +30,7 @@ export class Modal extends Component {
     return createPortal(
       <div className={css.overlay} onClick={this.handleBackdropClick}>
         <div className={css.modal}>
-          <img src="" alt="" />
+          <img className={css.img} src={this.props.photo} alt="" />
           {this.props.children}
         </div>
       </div>,
@@ -46,9 +38,3 @@ export class Modal extends Component {
     );
   }
 }
-
-// export const Modal = () => {
-//   return (
-
-//   );
-// };

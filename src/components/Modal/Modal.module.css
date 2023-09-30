@@ -2,8 +2,8 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,10 +12,12 @@
 }
 
 .modal {
-  /* display: block; */
-  /* max-width: 408px; */
-  padding: 100px;
-  max-width: calc(100vw - 48px);
-  max-height: calc(100vh - 24px);
-  background-color: beige;
+  display: block;
+
+  max-width: calc(100vw - 160px);
+  max-height: calc(100vh - 120px);
+}
+.img {
+  display: block;
+  width: 800px;
 }

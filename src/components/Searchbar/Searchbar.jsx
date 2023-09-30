@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import css from './Searchbar.module.css';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { FaSistrix } from 'react-icons/fa6';
 
 export default class Searchbar extends Component {
   state = {
@@ -35,6 +36,7 @@ export default class Searchbar extends Component {
             className={css.button}
             onClick={this.handleSubmit}
           >
+            <FaSistrix size={25} />
             <span className={css.button_label}>Search</span>
           </button>
 

@@ -10,9 +10,9 @@ const params = {
   safesearch: true,
   per_page: 12,
 };
-export async function fetchPixabay(searchText, page = 1) {
+export const fetchPixabay = async (searchText, page) => {
   const resp = await axios.get(`?q=${searchText}&page=${page}`, { params });
-  const data = await resp.data;
-  console.log(data);
+  const data = resp.data;
+  // console.log(resp);
   return data;
-}
+};
