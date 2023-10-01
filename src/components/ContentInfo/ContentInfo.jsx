@@ -40,7 +40,11 @@ export default class ContentInfo extends Component {
         toast.success(`You found ${photos.total} images `);
       }
 
-      if (totalPhotos > 0 && totalPhotos <= photos.length + 12 && page !== 1) {
+      if (
+        totalPhotos > 0 &&
+        totalPhotos <= this.state.photos.length + 12 &&
+        page !== 1
+      ) {
         toast.info(`You have reached the end`);
       }
 
@@ -63,6 +67,7 @@ export default class ContentInfo extends Component {
       page: 1,
       photos: [],
       totalPhotos: 0,
+      error: null,
     });
   };
 
